@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================
-     AUDIO — commented out
-  ==========================================
+     AUDIO
+  ========================================== */
   const bgAudio = document.getElementById('bg-audio');
   const audioToggle = document.getElementById('audio-toggle');
   const audioIcon = document.getElementById('audio-icon');
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     bgAudio.addEventListener('pause', () => setAudioIcon(false));
     bgAudio.addEventListener('play', () => setAudioIcon(true));
   }
-  ==========================================*/
 
   /* ==========================================
      0. INTRO SEQUENCE — loader -> opening doors (wait for tap) -> hero
@@ -66,12 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     opening.removeEventListener('click', openDoors);
     opening.removeEventListener('keydown', onOpeningKey);
 
-    // Music disabled
-    // if (bgAudio) {
-    //   bgAudio.play()
-    //     .then(() => setAudioIcon(true))
-    //     .catch(() => { /* autoplay blocked */ });
-    // }
+    if (bgAudio) {
+      bgAudio.play()
+        .then(() => setAudioIcon(true))
+        .catch(() => { /* autoplay blocked */ });
+    }
 
     window.setTimeout(finishIntro, prefersReducedMotion ? 0 : 1150);
   }
